@@ -1,0 +1,178 @@
+Manifest-Version: 1.0
+Main-Class: lrecog.LeavesRecognition
+
+Name: lrecog/LeavesRecognition.class
+
+Name: lrecog/LeavesRecognition$1.class
+
+Name: lrecog/LeavesRecognition$AboutAction.class
+
+Name: lrecog/LeavesRecognition$ChangeLookAndFeelAction.class
+
+Name: lrecog/LeavesRecognition$ChangeThemeAction.class
+
+Name: lrecog/LeavesRecognition$ExitAction.class
+
+Name: lrecog/LeavesRecognition$OkAction.class
+
+Name: lrecog/LeavesRecognition$OpenAction.class
+
+Name: lrecog/LeavesRecognition$SaveAction.class
+
+Name: lrecog/LeavesRecognition$SaveAsAction.class
+
+Name: lrecog/LeavesRecognitionApplet.class
+
+Name: lrecog/LeavesRecognitionApplet$1.class
+
+Name: lrecog/LeavesRecognitionApplet$2.class
+
+Name: lrecog/gfx/ImageProcessor.class
+
+Name: lrecog/gfx/LeafImage.class
+
+Name: lrecog/gfx/LeafSpecies.class
+
+Name: lrecog/gfx/LeafToken.class
+
+Name: lrecog/gui/DefaultPanel.class
+
+Name: lrecog/gui/ErrorGraphDraw.class
+
+Name: lrecog/gui/ErrorGraphPanel.class
+
+Name: lrecog/gui/ErrorGraphPanel$1.class
+
+Name: lrecog/gui/ImagePanel.class
+
+Name: lrecog/gui/ImageProcPanel.class
+
+Name: lrecog/gui/ImageProcPanel$1.class
+
+Name: lrecog/gui/ImageProcPanel$2.class
+
+Name: lrecog/gui/ImageProcPanel$3.class
+
+Name: lrecog/gui/ImageProcPanel$4.class
+
+Name: lrecog/gui/ImageProcPanel$5.class
+
+Name: lrecog/gui/ImageProcPanel$6.class
+
+Name: lrecog/gui/ImageTreePanel.class
+
+Name: lrecog/gui/ImageTreePanel$1.class
+
+Name: lrecog/gui/LeafImageTree.class
+
+Name: lrecog/gui/LeafImageTree$1.class
+
+Name: lrecog/gui/LeafImageTree$OwnDropTargetListener.class
+
+Name: lrecog/gui/LeafImageTree$TransferableTreePath.class
+
+Name: lrecog/gui/NetworkPanel.class
+
+Name: lrecog/gui/NetworkPanel$1.class
+
+Name: lrecog/gui/NetworkPanel$2.class
+
+Name: lrecog/gui/RecogTablePanel.class
+
+Name: lrecog/gui/RecogTablePanel$1.class
+
+Name: lrecog/gui/RecogTablePanel$RecogResult.class
+
+Name: lrecog/gui/RecogTablePanel$RecogTableModel.class
+
+Name: lrecog/gui/RecognitionPanel.class
+
+Name: lrecog/gui/RecognitionPanel$1.class
+
+Name: lrecog/gui/RecognitionPanel$2.class
+
+Name: lrecog/gui/RecognitionPanel$3.class
+
+Name: lrecog/nnetwork/BackProp.class
+
+Name: lrecog/themes/AquaTheme.class
+
+Name: lrecog/themes/CharcoalTheme.class
+
+Name: lrecog/themes/ContrastTheme.class
+
+Name: lrecog/themes/EmeraldTheme.class
+
+Name: lrecog/themes/RubyTheme.class
+
+Name: lrecog/tools/ImageFilter.class
+
+Name: lrecog/tools/ImagePreview.class
+
+Name: lrecog/tools/ProjectEnv.class
+
+Name: lrecog/tools/Utils.class
+
+Name: lrecog/tools/XMLCfgReader.class
+
+Name: lrecog/tools/XMLCfgWriter.class
+
+Name: lrecog/tools/XMLFilter.class
+
+Name: org/xml/sax/AttributeList.class
+
+Name: org/xml/sax/Attributes.class
+
+Name: org/xml/sax/ContentHandler.class
+
+Name: org/xml/sax/DocumentHandler.class
+
+Name: org/xml/sax/ErrorHandler.class
+
+Name: org/xml/sax/InputSource.class
+
+Name: org/xml/sax/Locator.class
+
+Name: org/xml/sax/Parser.class
+
+Name: org/xml/sax/SAXException.class
+
+Name: org/xml/sax/SAXNotRecognizedException.class
+
+Name: org/xml/sax/SAXNotSupportedException.class
+
+Name: org/xml/sax/SAXParseException.class
+
+Name: org/xml/sax/XMLReader.class
+
+Name: org/xml/sax/helpers/AttributesImpl.class
+
+Name: org/xml/sax/helpers/NamespaceSupport.class
+
+Name: org/xml/sax/helpers/NamespaceSupport$Context.class
+
+Name: org/xml/sax/helpers/ParserAdapter.class
+
+Name: org/xml/sax/helpers/ParserAdapter$AttributeListAdapter.class
+
+Name: org/xml/sax/helpers/ParserFactory.class
+
+Name: org/xml/sax/helpers/XMLReaderFactory.class
+
+Name: resources/lrecog.properties
+
+Name: resources/lrecog_de_DE.properties
+
+Name: resources/default.xml
+
+Name: resources/images/icon_about.gif
+
+Name: resources/images/icon_imgproc.gif
+
+Name: resources/images/icon_leaf.gif
+
+Name: resources/images/icon_network.gif
+
+Name: resources/images/icon_recog.gif
+
+Name: resources/images/icon_tumble.gif
