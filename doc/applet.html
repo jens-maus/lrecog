@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<HTML>
+  <HEAD>
+    <base href="http://www.jens-langner.de/lrecog/">
+    <META name="description" content="A neuronal network based recognition system of leaf images">
+    <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <META name="author" content="Jens Langner">
+    <META name="keywords" content="leaf recognition, leafimage, recognition, neuronal network, backpropagation, java, swing, Blatterkennung, Neuronale Netze">
+    <TITLE>
+      Leaves Recognition Applet - a leaf image recognition based on a neuronal network
+    </TITLE>
+  </HEAD>
+  <BODY bgcolor="#C0C0C0" link="#0000FF">
+    <!-- The following code is used to identify the browser this pages is viewed. -->
+<SCRIPT type="text/javascript" language="JavaScript">
+<!--
+    var _info = navigator.userAgent; var _ns = false;
+    var _ie = (_info.indexOf("MSIE") > 0 && _info.indexOf("Win") > 0
+        && _info.indexOf("Windows 3.1") < 0);
+//-->
+</SCRIPT>
+    <COMMENT>
+<SCRIPT type="text/javascript" language="JavaScript1.1">
+<!--
+    var _ns = (navigator.appName.indexOf("Netscape") >= 0
+        && ((_info.indexOf("Win") > 0 && _info.indexOf("Win16") < 0
+        && java.lang.System.getProperty("os.version").indexOf("3.5") < 0)
+        || _info.indexOf("Sun") > 0));
+//-->
+</SCRIPT>
+    </COMMENT>
+    <CENTER>
+    <FONT face="Arial,Helvetica">
+     <TABLE border=0 cellspacing=0 cellpadding=15>
+          <TR>
+            <TD>
+              <A href="images/lrecog1b.jpg"><IMG src="images/lrecog1s.jpg" alt="LeavesRecognition" width="324" height="269" border=0></A>
+            </TD>
+            <TD valign="top">
+              <H1>
+                Leaves Recognition v1.0<BR>
+                Java-Applet
+              </H1>
+              <P>
+                Neuronal Network based recognition system of leaf images
+              </P>
+              <P>
+                Copyright &copy;`2001-2006 by<BR>
+                <BR>
+                LightSpeed Communications GbR<BR>
+                Rissweg 27b<BR>
+                01324 Dresden<BR>
+                Germany<BR>
+                <A href="http://www.light-speed.de/">http://www.light-speed.de/</A><BR>
+                <BR>
+                Author:<BR>
+                <A href="mailto:Jens.Langner@light-speed.de">Jens Langner</A> - <A href="http://www.jens-langner.de/">http://www.jens-langner.de/</A>
+              </P>
+              <P>
+                 <I><FONT size="-1">18th April 2006</FONT></I><BR>
+              </P>
+            </TD>
+          </TR>
+          <TR>
+            <TD align="left">
+              <FONT SIZE="-1">[ <A href="#start">Start Java Applet</A> ] - [ <A href="index.html#3.4">Start as Java Application</A> ]<BR>[ <A href="index.html#5">Download</A> ] - [ <A href="index.html">Documentation</A> ]</FONT>
+            </TD>
+	    <TD align="right">
+	      <IMG src="http://counter.light-speed.de/pphlogger.php?id=lrecog&amp;st=img&amp;showme=yes" height="0" width="0" border="0"></A>
+         <a href="http://www.sf.net/projects/lrecog"><img src="http://sourceforge.net/sflogo.php?group_id=113527&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+         <a href="http://sourceforge.net/donate/index.php?group_id=113527"><img src="http://images.sourceforge.net/images/project-support.jpg" width="88" height="32" border="0" alt="Support This Project" /> </a>
+	    </TD>
+          </TR>
+      </TABLE>
+      <HR width="100%">
+      <H4>
+         <B>Disclaimer of Warranty</B>
+      </H4>
+      <TABLE width="80%">
+        <TR>
+          <TD width="50">
+            <!-- Margin -->
+          </TD>
+          <TD>
+            LightSpeed Communications assumes no responsibility for errors or omissions in these materials.
+            <P>
+               THESE MATERIALS ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+              PARTICULAR PURPOSE, OR NON-INFRINGEMENT. LightSpeed Communications further does not warrant the accuracy or completeness of the information, text, graphics,links or other items
+              contained within these materials. LightSpeed Communications shall not be liable for any special, indirect, incidental, or consequential damages, including without limitation, lost
+              revenues or lost profits, which may result from the use of these materials. The information on this server is subject to change without notice and does not represent a commitment on the
+              part of LightSpeed Communications in the future.
+            </P>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+            <P>
+               Copyright &copy;`2001-2004 by<BR>
+              <BR>
+               LightSpeed Communications GbR<BR>
+               Rissweg 27b<BR>
+               01324 Dresden<BR>
+               <A href="http://www.light-speed.de/">http://www.light-speed.de/</A><BR>
+              <BR>
+               Author:<BR>
+               <A href="mailto:Jens.Langner@light-speed.de">Jens Langner</A>
+            </P>
+            <HR>
+            <A name="start"></A>
+            <H4>
+               <B>Java Applet</B>
+            </H4>
+            If you have a Java capable internet browser a small Java Swing based button should load on this page and you should be
+            able to click on this button to load and start the LeavesRecognition application as a java applet.<BR>
+            If an error occurs please make sure that you have at least <A href="http://java.sun.com/products/plugin/">Java-Plug-In v1.3.1</A> installed.<BR>
+            <BR>
+            <FONT COLOR=#DF1045>
+            Please note that loading and starting of the applet may take some time accordingly to the network bandwith that is
+            currently available and the number of predefined images. So please be patient until it is fully initialized.<BR>
+            <BR>
+            <CENTER>
+            The loading &amp; starting process may take up to 2-5 minutes!!!!
+            </CENTER>
+            </FONT>
+            <BR>
+          </TD>
+        </TR>
+      </TABLE>
+      <BR>
+      <!-- The following code is repeated for each APPLET tag -->
+      <SCRIPT type="text/javascript" language="JavaScript">
+      <!--
+        if (_ie == true) document.writeln('<OBJECT classid="clsid:8AD9C840-044E-11D1-B3E9-00805F499D93" width="250" height="50" align="baseline" codebase="http://java.sun.com/products/plugin/1.3/jinstall-13-win32.cab#Version=1,3,0,0"><NOEMBED><XMP>');
+        else if (_ns == true) document.writeln('<EMBED type="application/x-java-applet;version=1.3" width="250" height="50" align="baseline" codebase="classes" code="lrecog/LeavesRecognitionApplet" config="resources/default.xml" color="c0c0c0" imagedir="resources/images/leaves" image0="species1_01.jpg" image1="species1_02.jpg" image2="species1_03.jpg" image3="species1_04.jpg" image4="species1_05.jpg" image5="species1_06.jpg" image6="species1_07.jpg" image7="species1_08.jpg" image8="species1_09.jpg" image9="species1_10.jpg" image10="species2_01.jpg" image11="species2_02.jpg" image12="species2_03.jpg" image13="species2_04.jpg" image14="species2_05.jpg" image15="species2_06.jpg" image16="species2_07.jpg" image17="species2_08.jpg" image18="species3_01.jpg" image19="species3_02.jpg" image20="species3_03.jpg" image21="species3_04.jpg" image22="species3_05.jpg" image23="species3_06.jpg" image24="species3_07.jpg" image25="species3_08.jpg" image26="species3_09.jpg" image27="species4_01.jpg" image28="species4_02.jpg" image29="species4_03.jpg" image30="species4_04.jpg" pluginspage="http://java.sun.com/products/plugin/1.3/plugin-install.html"><NOEMBED><XMP>');
+      //-->
+      </SCRIPT>
+        <APPLET code="lrecog/LeavesRecognitionApplet" codebase="classes" align="baseline" width="200" height="200">
+      </XMP>
+          <PARAM name="java_code" value="lrecog/LeavesRecognitionApplet">
+          <PARAM name="java_codebase" value="classes">
+          <PARAM name="java_type" value="application/x-java-applet;version=1.3">
+          <PARAM name="scriptable" value="true">
+          <PARAM name="color" value="c0c0c0">
+          <PARAM name="config" value="resources/default.xml">
+          <PARAM name="imagedir" value="resources/images/leaves">
+          <PARAM NAME=IMAGE0  VALUE="species1_01.jpg">
+          <PARAM NAME=IMAGE1  VALUE="species1_02.jpg">
+          <PARAM NAME=IMAGE2  VALUE="species1_03.jpg">
+          <PARAM NAME=IMAGE3  VALUE="species1_04.jpg">
+          <PARAM NAME=IMAGE4  VALUE="species1_05.jpg">
+          <PARAM NAME=IMAGE5  VALUE="species1_06.jpg">
+          <PARAM NAME=IMAGE6  VALUE="species1_07.jpg">
+          <PARAM NAME=IMAGE7  VALUE="species1_08.jpg">
+          <PARAM NAME=IMAGE8  VALUE="species1_09.jpg">
+          <PARAM NAME=IMAGE9  VALUE="species1_10.jpg">
+          <PARAM NAME=IMAGE10 VALUE="species2_01.jpg">
+          <PARAM NAME=IMAGE11 VALUE="species2_02.jpg">
+          <PARAM NAME=IMAGE12 VALUE="species2_03.jpg">
+          <PARAM NAME=IMAGE13 VALUE="species2_04.jpg">
+          <PARAM NAME=IMAGE14 VALUE="species2_05.jpg">
+          <PARAM NAME=IMAGE15 VALUE="species2_06.jpg">
+          <PARAM NAME=IMAGE16 VALUE="species2_07.jpg">
+          <PARAM NAME=IMAGE17 VALUE="species2_08.jpg">
+          <PARAM NAME=IMAGE18 VALUE="species3_01.jpg">
+          <PARAM NAME=IMAGE19 VALUE="species3_02.jpg">
+          <PARAM NAME=IMAGE20 VALUE="species3_03.jpg">
+          <PARAM NAME=IMAGE21 VALUE="species3_04.jpg">
+          <PARAM NAME=IMAGE22 VALUE="species3_05.jpg">
+          <PARAM NAME=IMAGE23 VALUE="species3_06.jpg">
+          <PARAM NAME=IMAGE24 VALUE="species3_07.jpg">
+          <PARAM NAME=IMAGE25 VALUE="species3_08.jpg">
+          <PARAM NAME=IMAGE26 VALUE="species3_09.jpg">
+          <PARAM NAME=IMAGE27 VALUE="species4_01.jpg">
+          <PARAM NAME=IMAGE28 VALUE="species4_02.jpg">
+          <PARAM NAME=IMAGE29 VALUE="species4_03.jpg">
+          <PARAM NAME=IMAGE30 VALUE="species4_04.jpg">
+          <FONT COLOR=#FF1010>This browser doesn`t support Java 2 SDK, Standard Edition v1.3 for APPLETS</FONT>
+          <BR><BR>
+        </APPLET></NOEMBED></EMBED>
+      </OBJECT>
+      <HR width="100%">
+      <TABLE width="98%">
+        <TR>
+          <TD>
+            <FONT SIZE="-1">Copyright &copy;`2001-2006 by <A href="mailto:Jens.Langner@light-speed.de">Jens Langner</A></FONT>
+          </TD>
+          <TD align="right">
+            <FONT SIZE="1">18th April 2006</FONT>
+          </TD>
+        </TR>
+      </TABLE>
+    </FONT>
+    </CENTER>
+  </BODY>
+</HTML>

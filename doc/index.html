@@ -1,0 +1,635 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<HTML>
+  <HEAD>
+    <base href="http://www.jens-langner.de/lrecog/">
+    <META name="description" content="Neuronal network based recognition system of leaf images">
+    <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <META name="author" content="Jens Langner">
+    <META name="keywords" content="leaf recognition, leafimage, recognition, neuronal network, backpropagation, java, swing, Blatterkennung, Neuronale Netze">
+    <TITLE>
+      Leaves Recognition - a leaf image recognition based on a neuronal network
+    </TITLE>
+  </HEAD>
+  <BODY bgcolor="#C0C0C0" link="#0000FF">
+    <FONT face="Arial,Helvetica">
+     <TABLE border=0 cellspacing=0 cellpadding=15>
+          <TR>
+            <TD>
+              <A href="images/lrecog1b.jpg"><IMG src="images/lrecog1s.jpg" alt="LeavesRecognition" width="324" height="269" border=0></A>
+            </TD>
+            <TD valign="top">
+              <H1>
+                Leaves Recognition v1.0
+              </H1>
+              <P>
+                Neuronal Network based recognition system of leaf images
+              </P>
+              <P>
+                Copyright &copy;`2001-2006 by<BR>
+                <BR>
+                LightSpeed Communications GbR<BR>
+                Rissweg 27b<BR>
+                01324 Dresden<BR>
+                Germany<BR>
+                <A href="http://www.light-speed.de/">http://www.light-speed.de/</A><BR>
+                <BR>
+                Author:<BR>
+                <A href="mailto:Jens.Langner@light-speed.de">Jens Langner</A> - <A href="http://www.jens-langner.de/">http://www.jens-langner.de/</A>
+              </P>
+              <P>
+                 <I><FONT size="-1">18th April 2006</FONT></I><BR>
+              </P>
+            </TD>
+          </TR>
+          <TR>
+            <TD align="left">
+              <FONT SIZE="-1">[ <A href="applet.html">Java Applet</A> ] - [ <A href="#3.4">Start as Java Application</A> ] - [ <A href="#5">Download</A> ]</FONT>
+            </TD>
+            <TD align="right">
+              <IMG src="http://counter.light-speed.de/pphlogger.php?id=lrecog&amp;st=img&amp;showme=yes" border="0" height=0 width=0>
+              <a href="http://www.sf.net/projects/lrecog"><img src="http://sourceforge.net/sflogo.php?group_id=113527&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" /></a>
+              <a href="http://sourceforge.net/donate/index.php?group_id=113527"><img src="http://images.sourceforge.net/images/project-support.jpg" width="88" height="32" border="0" alt="Support This Project" /> </a>
+            </TD>
+          </TR>
+      </TABLE>
+      <HR width="100%">
+      <H2>News</H2>
+      Since September 2004, the sources and binaries of the Leaves Recognition project are hosted in an own sourceforge.net project
+      to which any interested developer is gratefully invited.<BR><BR>
+      Please feel free to have a look at the sourceforge.net project webpages available at
+      <A href="http://www.sf.net/projects/lrecog">http://www.sf.net/projects/lrecog</A>. And please send me an email if you want to
+      join the project team and develop directly within the SVN resporitory where the source code is available from. Otherwise have a look
+      at the <A href="#5">Download</A> section of this document if you are interested in downloading either a binary build or having
+      a look at the source code of Leaves Recognition.<BR><BR>
+      Jens Langner - October 2004
+      <BR><BR>
+      <HR width="100%">
+    <A name="Contents"></A>
+    <H2>
+       Table of Contents
+    </H2>
+    <H3>
+       <A href="#1"><FONT size="+2">1 Introduction</FONT></A>
+    </H3>
+    <UL>
+      <LI>
+        <A href="#1.1">1.1 Main Purpose</A>
+      </LI>
+      <LI>
+        <A href="#1.2">1.2 Development</A>
+      </LI>
+    </UL>
+    <H3>
+       <A href="#2"><FONT size="+2">2 Theoretical Background</FONT></A>
+    </H3>
+    <UL>
+      <LI>
+        <A href="#2.1">2.1 Image edge detection</A>
+      </LI>
+      <LI>
+        <A href="#2.2">2.2 Thinning</A>
+      </LI>
+      <LI>
+        <A href="#2.3">2.3 Leaf image token</A>
+      </LI>
+      <LI>
+        <A href="#2.4">2.4 Neuronal Network</A>
+      </LI>
+    </UL>
+    <H3>
+       <A href="#3"><FONT size="+2">3 Implementation</FONT></A>
+    </H3>
+    <UL>
+      <LI>
+        <A href="#3.1">3.1 Features</A>
+      </LI>
+      <LI>
+        <A href="#3.2">3.2 Requirements</A>
+      </LI>
+      <LI>
+        <A href="#3.3">3.3 Starting as an Applet</A>
+      </LI>
+      <LI>
+        <A href="#3.4">3.4 Starting as an Application</A>
+      </LI>
+    </UL>
+    <H3>
+       <A href="#4"><FONT size="+2">4 Usage</FONT></A>
+    </H3>
+    <UL>
+      <LI>
+        <A href="#4.1">4.1 Image Processing</A>
+      </LI>
+      <LI>
+        <A href="#4.2">4.2 Neuronal Network</A>
+      </LI>
+      <LI>
+        <A href="#4.3">4.3 Recognition</A>
+      </LI>
+    </UL>
+    <H3>
+       <A href="#5"><FONT size="+2">5 Download</FONT></A>
+    </H3>
+    <UL>
+      <LI>
+        <A href="#5.1">5.1 Disclaimer</A>
+      </LI>
+      <LI>
+        <A href="#5.2">5.2 Usage / Copyright</A>
+      </LI>
+      <LI>
+        <A href="#5.3">5.3 Binary files</A>
+      </LI>
+      <LI>
+        <A href="#5.4">5.4 Source code</A>
+      </LI>
+    </UL>
+    <H3>
+       <A href="#6"><FONT size="+2">6 Support</FONT></A>
+    </H3>
+    <H3>
+       <A href="#7"><FONT size="+2">7 Acknowledgement</FONT></A>
+    </H3>
+    <H3>
+       <A href="#8"><FONT size="+2">8 Glossary</FONT></A>
+    </H3>
+    <HR width="100%">
+    <H2>
+       <A name="1"></A>1 Introduction
+    </H2>
+    <BLOCKQUOTE>
+      <H3>
+         <A name="1.1"></A>1.1 Main Purpose
+      </H3>
+       LeavesRecognition is a neuronal network based java application/applet to recognize images of leaves accordingly to a previously trained Backpropagation Network.<BR>
+       The intention of this application is to give the user the ability to administrate a hierarchical list of leaf images,
+       where he can performe some sort of edge detection to identify the individual tokens of every image. This tokens will then be
+       the basis of the neuronal network calculations to make it possible to recognize a unknown leaf image and specify the
+       species it belongs to.<BR>
+       The main purpose of this application/documentation should be to show that the outer frame of a leaf and a Backpropagation
+       Network is enough to give a reasonable statement about the species it belongs to.
+      <H3>
+         <A name="1.2"></A>1.2 Development
+      </H3>
+       The development started in July 2001 based on a study project of <A href="http://www.jens-langner.de//">Jens Langner</A> at the University of Applied Sciences Dresden (<A href="http://www.htw-dresden.de/">HTW</A>)
+       and was completed in late August.<BR>
+       To realize the above mentioned purpose and to make it possible to use this application on nearly every operating system,
+       the choosen programming language for the implementation is <A href="http://java.sun.com/">Java</A>.<BR>
+       Beside the fact of writing a java based application to realize this purpose, one addtional feature is that it could also
+       be used as a java applet to directly give the user the ability to start it via a java enabled internet browser.
+    </BLOCKQUOTE>
+    <A href="#Contents">&lt;&lt;</A>
+    <BR>
+    <HR width="100%">
+    <H2>
+       <A name="2"></A>2 Theoretical Background
+    </H2>
+    <BLOCKQUOTE>
+      <H3>
+         <A name="2.1"></A>2.1 Image edge detection
+      </H3>
+      On of the main tasks of this application is the detection of specific tokens in a leaf image. This tokens will then be the
+      basis of the neuronal network calculations. Assuming that the image is a full 2D scan of a single leaf like in the examples
+      below, we considered to use the well-known Prewitt Edge detection algorithm which I want to explain further:<BR>
+      <BR>
+      Prewitt edge detection produces an image where higher grey-level values indicate the presence of an edge between two objects.
+      The Prewitt Edge Detection filter computes the root mean square of two 3x3 templates. It is one of the most popular 3x3 edge
+      detection filters.<BR>
+      The Prewitt edge detection filter uses these two 3x3 templates to calculate the gradient value:
+      <PRE>
+      -1  0  1      1  1  1
+      -1  0  1      0  0  0
+      -1  0  1     -1 -1 -1
+
+          X            Y
+      </PRE>
+      Now consider the following 3x3 image window:
+      <PRE>
+      +------------+
+      | a1  a2  a3 |
+      | a4  a5  a6 |
+      | a7  a8  a9 |
+      +------------+
+      </PRE>
+      where:<BR>
+      <UL type="square">
+          <LI>a1 .. a9 - are the grey levels of each pixel in the filter window</LI>
+          <LI>X = -1*a1 + 1*a3 - 1*a4 + 1*a6 - 1*a7 + 1*a9</LI>
+          <LI>Y =  1*a1 + 1*a2 + 1*a3 - 1*a7 - 1*a8 - 1*a9</LI>
+          <LI>Prewitt gradient = SQRT(X*X + Y*Y)</LI>
+      </UL>
+      All pixels are filtered. In order to filter pixels located near the edge of an image, edge pixels values are replicated to
+      give sufficient data.
+      <BR>
+      <H3>
+         <A name="2.2"></A>2.2 Thinning
+      </H3>
+      As discussed earlier, the idea of identifying a specific leaf image`s species here is that the outer frame of a leaf
+      is enough to specify the species it belongs to. To accomplish that, it is necessary to identify this outer frame exactly.
+      The previously applied Prewitt Edge detection normally just identify the edges with a preconfigured threshold and after
+      this edge detection we have to perform a thinning algorithm to minimize this threshold-based edge to a one-line frame where
+      we then can apply a sort of token recognition as discussed later.<BR>
+      The used thinning algorithm here processed the image recursivly and minimizes the found lines to a one-pixel wide one by
+      comparing the actual pixel situation with specific patterns and then minimizes it.
+      <H3>
+         <A name="2.3"></A>2.3 Leaf image token
+      </H3>
+      The central part of this application are the tokens of each leaf image that are found after the image processing is through
+      with it. What exactly stands behind the idea of this tokens and how we defined this tokens should be explained here in
+      detail.<BR>
+      The idea behind the transfer of the leaf image shape into a neuronal network usable form is, that the cosinus and sinus
+      angles of the shape represents the criterias of a recognition pattern.<BR>
+      <BR>
+      <TABLE>
+          <TR>
+              <TD valign="top">
+              The right hand image shows a part of a leaf image that was already processed through the above mentioned edge
+              detection and thinning algorithms.<BR>
+              <BR>
+              To give you an idea of what you see in this image, here is a short list:<BR>
+              <UL>
+                  <LI><FONT COLOR=#007900>Green</FONT> line: The shape of the leaf image after a successfull edge detection &amp; thinning.</LI>
+                  <LI><FONT COLOR=#DF1045>Red</FONT> Square: This square represents a point on the shape of the leaf image from which we are going to draw a line to the next square.</LI>
+                  <LI><FONT COLOR=#10659A>Blue</FONT> line: The compound of the center of two squares from which we are going to calculate the cosinus and sinus angle. Such a blue line is a representation of a leaf token.</LI>
+              </UL>
+              If you now take a deeper view on the small triangle zoom on this image you should regonize that it shows a right-angled
+              triangle. This and the summary of all triangles of a leaf image are the representation of the tokens of a leaf from which we
+              can start the neuronal network calculations.
+              </TD>
+              <TD><IMG src="images/token1.jpg" alt="Expl. Token" width="240" height="322"></TD>
+          </TR>
+     </TABLE>
+     <BR>
+     <TABLE>
+          <TR>
+            <TD>
+              <IMG src="images/token2.gif" alt="Detail of Token" width="155" height="187">
+            </TD>
+            <TD valign="top">
+              On the left hand side you see a small image of the right-angled triangle which represents a token of a single leaf
+              image. Here it should be clear now that the angles A and B are the two necessary parts which will be fit into the
+              neuronal network layers.<BR>
+              <BR>
+              With this two angles we can exactly represent the direction of the hypotenuse from point P1 to P2 which is absolutly
+              necessary for the representation of a leaf image.
+            </TD>
+          </TR>
+      </TABLE>
+      <H3>
+         <A name="2.4"></A>2.4 Neuronal Network
+      </H3>
+      Another main part of this work is the integration of a feed-forward backpropagation neuronal network. As described
+      earlier the inputs for this neuronal network are the individual tokens of a leaf image, and as a token normally consists of
+      a cosinus and sinus angle, the amount of input layers for this network are the amount of tokens multiplied by two.<BR>
+      <BR>
+      <TABLE>
+          <TR>
+              <TD valign="top">
+              The image on the right side should give you an idea of the neuronal network that takes place in the LeavesRecognition
+              application.<BR>
+              We have choosen a feed-forward backpropagation network because it was part of the task to show that just a backpropagation
+              network and the shape of a leaf image is enough to specify the species of a leaf.<BR>
+              The implemented network also just have one input, hidden and output layer to simplify and speed-up the calculations on
+              that java implementation.<BR>
+              <BR>
+              To fill the input neurons of the network, we use the previous calculated leaf tokens like dicussed in section 2.3.
+              The number of output neurons is normally specified by the amount of different species because we use a encoded form to
+              specify the outputs.<BR>
+              All other behaviour of the network is specified by the normal mathematical principals of a backpropagation network.
+              If you want to get an idea of how such a backpropagation network works, please refer to deeper explainations about the
+              backpropagation algorithm.
+              </TD>
+              <TD><IMG src="images/bpn.gif" alt="Neuronal Network" width=333 height=359></TD>
+          </TR>
+     </TABLE>
+      <BR>
+    </BLOCKQUOTE>
+    <A href="#Contents">&lt;&lt;</A>
+    <BR>
+    <HR width="100%">
+    <H2>
+       <A name="3"></A>3 Implementation
+    </H2>
+    <BLOCKQUOTE>
+      <H3>
+         <A name="3.1"></A>3.1 Features
+      </H3>
+      To give you an idea of what the final implemenation of this application can give you, please see the following list:<BR>
+      <BR>
+      <UL type="disk">
+        <LI>Usable as Java Application or Applet</LI>
+        <LI>Configurable Neuronal Network properties</LI>
+        <LI>XML based config file</LI>
+        <LI>Configurable image processing properties (Threshold/Distance/min.Line)</LI>
+        <LI>Application mode features loading/saving of projects</LI>
+        <LI>Applet mode features the loading of a default config</LI>
+        <LI>Multilingual (English/German incl.)</LI>
+        <LI>Changeable Look&amp;Feel</LI>
+        <LI>Themes system</LI>
+      </UL>
+      <H3>
+         <A name="3.2"></A>3.2 Requirements
+      </H3>
+      As every software product, this application also have some sort of requirements to successfully use it:<BR>
+      <BR>
+      <UL type="disk">
+        <LI>Operating system with a Java Virtual Machine (JVM)</LI>
+        <LI><A href="http://java.sun.com/j2se/1.3/jre/">Java Runtime Environment</A> (JRE) v1.3.1 or higher</LI>
+        <LI>Installed <A href="http://java.sun.com/products/plugin/">Java-Plug-In v1.3.1</A> or higher for Applet mode</LI>
+      </UL>
+      <H3>
+         <A name="3.3"></A>3.3 Starting as an Applet
+      </H3>
+        To get a impression of what this application is for and how it would look like if you install it as an real java
+        application on your system, it is also possible to use it as a Java Applet from within every java enabled browser.<BR>
+        As a Applet has only restricted access to your file system we have predefined some default configuration which will
+        be loaded as soon as you start the applet. In this Applet-Mode you are not able to save or load your project files nor
+        are you able to load images from your own filesystem.<BR>
+        This Applet mode should only give you the possibility to use the application without any installation. But if you
+        encounter that you want to use all features (load/save projects) then you have to install the Application jar file, like
+        described in the next section.<BR>
+        <BR>
+        If you want to give the Applet enabled LeavesRecognition a try, <A href="applet.html">click here</A>.
+      <BR>
+      <H3>
+         <A name="3.4"></A>3.4 Starting as an Application
+      </H3>
+      To start LeavesRecognition as a standalone application you need to <A href="#5">download</A> the installation archive which you can find
+      in the download section of this documentation. Installation as a standalone application should normally very easy as long
+      as you already have a preinstalled java runtime environment (JRE) on the operating system you are actually using. If you
+      need to install the java environment first, please refer to <A href="http://java.sun.com/j2se/">http://java.sun.com/j2se/</A> for
+      any further information.<BR>
+      <BR>
+      After downloading the installation zip archive you can extract the archives content to a directory of your choice. We have
+      provided and included a startup-script for Linux (bash) and Windows (bat) which you should be able to execute. This script
+      should automatically start the application with all necessary data.<BR>
+      <BR>
+      Included in another archive are also some sample images of leaves which you can use for working with the application. Please refer
+      to Chapter 4 (<A href="#4">Usage</A>) that explains how to use LeavesRecognition.
+      <BR>
+    </BLOCKQUOTE>
+    <A href="#Contents">&lt;&lt;</A>
+    <BR>
+    <HR width="100%">
+    <H2>
+       <A name="4"></A>4 Usage
+    </H2>
+    The LeavesRecognition application is splitted into three main tabbed panes which represent the three main operations a
+    user can perform. One is the Image Processing in which the leaf images will be loaded and ordered in a hierarchical list.
+    The second one is to perform the neuronal network calculations on the previously processed images. And the third one is to
+    recognize a existing leaf image and calculate the amount of recognized tokens to specify the species this image can belong to.
+    <BLOCKQUOTE>
+      <H3>
+         <A name="4.1"></A>4.1 Image Processing
+      </H3>
+      One of the most important parts of the whole application is the image processing. Without finding any usefull tokens in
+      the leaf images, the neuronal network calculation. So we spent lots of our efforts in the edge detection and thinning
+      algorithms.
+      <BR>
+      <BR>
+      <TABLE border=0 cellspacing=0 cellpadding=2>
+          <TR>
+              <TD valign="top">
+              By clicking on the right image you see a snapshot of the image processing tab, where a user can perform
+              different operations to a list of loaded images.<BR>
+              The small left image in this tab is a view of the original image like in the image file and the big one in the
+              center of this window is the image after the user had pressed "Find Token" to process the different image
+              processing operations including edge detection and thinning.<BR>
+              There are 3 configurable sliders on this tab where a user can define the Threshold for the edge detection, the
+              distance of the tokens (red square) and a minimum amount of pixels a line have to be to be recognized as a part of
+              the shape.<BR>
+              At the right upper side of this window you should see a hierarchical JTree where you can add and delete images to this
+              tree. Please note that you can move images from one species to another by Drag&amp;Drop.
+              </TD>
+              <TD><A href="images/lrecog1b.jpg"><IMG src="images/lrecog1s.jpg" alt="Image Processing Tab" width=324 height=269 border=0></A></TD>
+          </TR>
+      </TABLE>
+      <BR>
+      So if you have added a image to a species node, this image is recognized as part of this Species and will be included in
+      the neuronal network calculations on the second tab. For a good quality result you should normally add at least 5 images
+      of a species to give the neuronal network enough tokens to find the specific shape of this leaf species.
+      <H3>
+         <A name="4.2"></A>4.2 Neuronal Network
+      </H3>
+      A central part of the application is the neuronal network. Based on the information gained from the image processing
+      the application can calculate the neuronal network weights and output a error graph to display the overall error of the
+      learning process.
+      <BR>
+      <BR>
+      <TABLE border=0 cellspacing=0 cellpadding=2>
+          <TR>
+              <TD valign="top">
+              Like in the first described "Image Processing" tab, the neuronal network tab has also some sort of configuration.
+              Mainly this configuration are the properties of the neuronal network. If you are not so familar with the background of
+              neuronal network you can simply press "Set Default" and use the default properties the application suggests for your
+              environment.<BR>
+              <BR>
+              Based on the amount of images and network properties you normally need to specify around 500-1000 training steps to
+              get a good result in the recognition later. If the error rate drops below 0.01 you normally should encounter no problem
+              in recognizing different leaf images.<BR>
+              The amount of input neurons for the network is normally twice the amount of tokens because of the sinus &amp; cosinus value
+              for one token.
+              </TD>
+              <TD><A href="images/lrecog2b.jpg"><IMG src="images/lrecog2s.jpg" alt="Neuronal Network Tab" width=324 height=269 border=0></A></TD>
+          </TR>
+      </TABLE>
+      <BR>
+      You should keep the learning rate and number of hidden neurons low, because then you normally get out a good training
+      phase for the network. Additionally of specifing the input and hidden neurons you are also able to specify the output
+      neurons, what is normally not needed. The amount of output neurons is normally the amount of different leaf species which
+      are in the JTree Panel of the image processing.
+      <H3>
+         <A name="4.3"></A>4.3 Recognition
+      </H3>
+      The last of three parts in this application is the recognition tab. Here you can load a image and process a recognition
+      of this leaf image to specify the possible species it can belong to.
+      <BR>
+      <BR>
+      <TABLE border=0 cellspacing=0 cellpadding=2>
+          <TR>
+              <TD valign="top">
+              Like in the first "Image processing" tab you are also able to control the Threshold, Distance and min.Line of the
+              image processing that takes place on the loaded image as soon as you press "Recognize".<BR>
+              <BR>
+              After this image processing, the LeavesRecognition application is going to use the recognized tokens of this new image
+              as the values to identify the species this image belongs to.<BR>
+              <BR>
+              The results of this recognition will be displayed in a short precentage JTable on the right side of the GUI. Here you can
+              see which of the species that are in the trained network are most similar to the loaded leaf image.
+              </TD>
+              <TD><A href="images/lrecog3b.jpg"><IMG src="images/lrecog3s.jpg" alt="Recognition Tab" width=324 height=269 border=0></A></TD>
+          </TR>
+      </TABLE>
+      <BR>
+      Speaking of the results this application produces, we can say that on a well trained neuronal network it normally should
+      point at one specific species. Also an interesting point of view is the neighbourhood of species which can somehow be explained
+      with the results of the neuronal network of this application.
+    </BLOCKQUOTE>
+    <A href="#Contents">&lt;&lt;</A>
+    <HR width="100%">
+    <H2>
+       <A name="5"></A>5 Download
+    </H2>
+    <BLOCKQUOTE>
+      <H3>
+         <A name="5.1"></A>5.1 Disclaimer
+      </H3>
+      LightSpeed Communications GbR, represented through Jens Langner, assumes no responsibility for errors or omissions in these materials.
+      <P>
+        THESE MATERIALS ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+        PARTICULAR PURPOSE, OR NON-INFRINGEMENT. LightSpeed Communications further does not warrant the accuracy or completeness of the information, text, graphics,links or other items
+        contained within these materials. LightSpeed Communications shall not be liable for any special, indirect, incidental, or consequential damages, including without limitation, lost
+        revenues or lost profits, which may result from the use of these materials. The information on this server is subject to change without notice and does not represent a commitment on the
+        part of LightSpeed Communications in the future.
+      </P>
+      <H3>
+         <A name="5.2"></A>5.2 Usage / Copyright
+      </H3>
+      This program is free software; you can redistribute it and/or modify
+      it under the terms of the GNU General Public License as published by
+      the Free Software Foundation; either version 2 of the License, or (at
+      your option) any later version.<BR>
+      <BR>
+      This program is distributed in the hope that it will be useful, but
+      WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+      General Public License for more details.<BR>
+      <BR>
+      You should have received a copy of the GNU General Public License
+      along with this program; if not, write to the Free Software
+      Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.<BR>
+      <BR>
+      <H3>
+         <A name="5.3"></A>5.3 Binary files
+      </H3>
+      Here you can download the necessary files to install LeavesRecognition as an Java Application at your operating system.
+      Please check first if your system fits the requirements as mentioned in section <A href="#3.2">3.2</A>.<BR>
+      <BR>
+      <I>Precompiled Java binaries:</I><BR>
+      <A href="http://counter.light-speed.de/dlcount.php?id=lrecog&amp;url=http://prdownloads.sourceforge.net/lrecog/lrecog1_0-bin.tar.gz?download">lrecog1_0-bin.tar.gz</A> - Version 1.0 - (648199 bytes)<BR>
+      <BR>
+      <I>Sample configuration with leaf images:</I><BR>
+      <A href="http://counter.light-speed.de/dlcount.php?id=lrecog&amp;url=http://prdownloads.sourceforge.net/lrecog/lrecog1_0-cfg.tar.gz?download">lrecog1_0-cfg.tar.gz</A> - Version 1.0 - (503746 bytes)<BR>
+      <BR>
+      You can install the binary package into any directory of your choice. The sample configuration should normally resist
+      in your home directory so that you can easily load the images and the default.xml config file from there.
+      <H3>
+         <A name="5.4"></A>5.4 Source code
+      </H3>
+      As we have published this application under the GNU General Public License (GPL) we are also shipping it with the
+      latest source code. However, as the whole development is hosted on a sourceforge.ne project since september 2004, the
+      sources are fully available through this sf.net project for better synchronizing changes from different persons.
+      <BR>
+      So please note that if you want to participate to the development of the Leaves Recognition application or if you are
+      interested in having a look at the sources of it, please visit the official sourceforge.net project webpage at:
+      <BR><BR>
+      <A href="http://www.sf.net/projects/lrecog">http://www.sf.net/projects/lrecog</A>
+      <BR><BR>
+      There you can find or checkout the sources from the SVN. However, if you intend to do any changes to them, please note
+      that the GPL license forces you to submit back <B>ALL</B> changes you made to the original sources. So if you want to do any modifications please either submit
+      a patchfile to me or tell me your sourceforge.net account name for adding you as an offcial developer to the site.
+      <BR><BR>
+      Please note that the sources are only available from the SVN repostory and not as a complete archive. So if you are interested
+      in downloading or having a look at them please find instructions on how to use SVN here:
+      <BR><BR>
+      <A href="http://sourceforge.net/svn/?group_id=113527">http://sourceforge.net/svn/?group_id=113527</A>
+      <BR><BR>
+      or either have a direct look by browsing the SVN respository via ViewVC at:
+      <BR><BR>
+      <A href="http://svn.sourceforge.net/viewcvs.py/lrecog/">http://svn.sourceforge.net/viewcvs.py/lrecog/</A>
+      <BR>
+    </BLOCKQUOTE>
+    <A href="#Contents">&lt;&lt;</A>
+    <HR width="100%">
+    <H2>
+       <A name="6"></A>6 Support
+    </H2>
+    There are several ways to get technical support, updates or detail information:<BR>
+    <BLOCKQUOTE>
+    <BR>
+    <B>eMail:</B><BR>
+    <A href="mailto:Jens.Langner@light-speed.de">Jens.Langner@light-speed.de</A><BR>
+    <BR>
+    <B>Mail:</B><BR>
+    LightSpeed Communications GbR<BR>
+    Rissweg 27b<BR>
+    01324 Dresden<BR>
+    GERMANY<BR>
+    <BR>
+    <B>WWW:</B><BR>
+    <A href="http://www.light-speed.de/">http://www.light-speed.de/</A><BR>
+    <A href="http://www.jens-langner.de/">http://www.jens-langner.de/</A><BR>
+    <BR>
+    </BLOCKQUOTE>
+    <A href="#Contents">&lt;&lt;</A>
+    <HR width="100%">
+    <H2>
+       <A name="7"></A>7 Acknowledgements
+    </H2>
+    My sincere thanks go to:<BR>
+    <UL>
+      <LI><A href="http://savage.light-speed.de/">Jens Tr&ouml;ger</A> for his technical help and being my best friend.</LI>
+      <LI>Christian P&ouml;tzsch, Stephan Wolf, Felix Kr&auml;mer and J&uuml;rgen Arndt<BR>from <A href="http://www.letzte-bankreihe.de/">http://www.letzte-bankreihe.de/</A> for their good moral support and fun.</LI>
+      <LI>the people from the <A href="http://www.amigager.de/">#amigager</A> IRC channel</LI>
+      <LI>Commodore and <A href="http://www.amiga.com/">Amiga Inc.</A> for the best operating system ever.</LI>
+    </UL>
+    <A href="#Contents">&lt;&lt;</A>
+    <HR width="100%">
+    <H2>
+       <A name="8"></A>8 Glossary
+    </H2>
+    <BLOCKQUOTE>
+    <TABLE border=0 cellspacing=5 cellpadding=5>
+        <TR>
+            <TD valign="top"><B>Neuronal Network</B></TD>
+            <TD>
+            A system of individual computational units known as neurons connected for the purpose of information processing.
+            Neural networks can be biological or artificial.
+            </TD>
+        </TR>
+        <TR>
+            <TD valign="top"><B>Backpropagation Network</B></TD>
+            <TD>
+            A backpropagation network is a special form of a feed-forward neuronal network. It optimizes the learning process
+            by propagating the weights of a actual neuron back to its previous matrix.
+            </TD>
+        </TR>
+        <TR>
+            <TD valign="top"><B>Thinning</B></TD>
+            <TD>
+            A thinning algorithm reduces a line with more then one pixel width to only one pixel width.
+            </TD>
+        </TR>
+        <TR>
+            <TD valign="top"><B>Java</B></TD>
+            <TD>A platform independent programming language. See <A href="http://java.sun.com/">http://java.sun.com/</A> for more information.</TD>
+        </TR>
+        <TR>
+            <TD valign="top"><B>Java-Applet</B></TD>
+            <TD>
+              A java application that can be started from within a internet browser with security aspects. Uptodate
+              internet browser normally support java natively, but to get the full power you should use the separate
+              <A href="http://java.sun.com/products/plugin/">Java Plug-In</A> technology to enable your browser to run the latest version of java.
+            </TD>
+        </TR>
+        <TR>
+            <TD valign="top"><B>SVN</B></TD>
+            <TD>Subversion Revision Control System - <A href="http://www.subversion.org/">http://www.subversion.org/</A></TD>
+        </TR>
+    </TABLE>
+    </BLOCKQUOTE>
+    <A href="#Contents">&lt;&lt;</A>
+    <HR width="100%">
+      <TABLE width="98%">
+        <TR>
+          <TD>
+            <FONT SIZE="-1">Copyright &copy;`2001-2006 by <A href="mailto:Jens.Langner@light-speed.de">Jens Langner</A></FONT>
+          </TD>
+          <TD align="right">
+            <FONT SIZE="1">18th April 2006</FONT>
+          </TD>
+        </TR>
+      </TABLE>
+    </FONT>
+  </BODY>
+</HTML>
