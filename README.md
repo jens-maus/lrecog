@@ -1,5 +1,8 @@
 # Leaves Recognition
 LeavesRecognition (lrecog) is a neuronal network based java application/applet to recognize images of leaves accordingly to a previously trained Backpropagation Network.
+
+![/doc/images/lrecog1b.jpg?raw=true](/doc/images/lrecog1s.jpg?raw=true "Leaves Recognition Application")
+
 The intention of this application is to give the user the ability to administrate a hierarchical list of leaf images, where he can performe some sort of edge detection to identify the individual tokens of every image. This tokens will then be the basis of the neuronal network calculations to make it possible to recognize a unknown leaf image and specify the species it belongs to.
 The main purpose of this application/documentation should be to show that the outer frame of a leaf and a Backpropagation Network is enough to give a reasonable statement about the species it belongs to.
 
@@ -48,19 +51,25 @@ The idea behind the transfer of the leaf image shape into a neuronal network usa
 
 The right hand image shows a part of a leaf image that was already processed through the above mentioned edge detection and thinning algorithms.
 
+![/doc/images/token1.jpg?raw=true](/doc/images/token1.jpg?raw=true "Token1")
+
 To give you an idea of what you see in this image, here is a short list:
 * Green line: The shape of the leaf image after a successfull edge detection & thinning.
 * Red Square: This square represents a point on the shape of the leaf image from which we are going to draw a line to the next square.
 * Blue line: The compound of the center of two squares from which we are going to calculate the cosinus and sinus angle. Such a blue line is a representation of a leaf token.
 
-If you now take a deeper view on the small triangle zoom on this image you should regonize that it shows a right-angled triangle. This and the summary of all triangles of a leaf image are the representation of the tokens of a leaf from which we can start the neuronal network calculations.	Expl. Token
+If you now take a deeper view on the small triangle zoom on this image you should regonize that it shows a right-angled triangle. This and the summary of all triangles of a leaf image are the representation of the tokens of a leaf from which we can start the neuronal network calculations.
 
-Detail of Token	On the left hand side you see a small image of the right-angled triangle which represents a token of a single leaf image. Here it should be clear now that the angles A and B are the two necessary parts which will be fit into the neuronal network layers.
+![/doc/images/token2.gif?raw=true](/doc/images/token2.gif?raw=true "Token Example")
+
+On the left hand side you see a small image of the right-angled triangle which represents a token of a single leaf image. Here it should be clear now that the angles A and B are the two necessary parts which will be fit into the neuronal network layers.
 
 With this two angles we can exactly represent the direction of the hypotenuse from point P1 to P2 which is absolutly necessary for the representation of a leaf image.
 
 ### Neuronal Network
 Another main part of this work is the integration of a feed-forward backpropagation neuronal network. As described earlier the inputs for this neuronal network are the individual tokens of a leaf image, and as a token normally consists of a cosinus and sinus angle, the amount of input layers for this network are the amount of tokens multiplied by two.
+
+![/doc/images/bpn.gif?raw=true](/doc/images/bpn.gif?raw=true "Neuronal Network")
 
 The image on the right side should give you an idea of the neuronal network that takes place in the LeavesRecognition application.
 We have choosen a feed-forward backpropagation network because it was part of the task to show that just a backpropagation network and the shape of a leaf image is enough to specify the species of a leaf.
@@ -109,25 +118,31 @@ The LeavesRecognition application is splitted into three main tabbed panes which
 ### Image Processing
 One of the most important parts of the whole application is the image processing. Without finding any usefull tokens in the leaf images, the neuronal network calculation. So we spent lots of our efforts in the edge detection and thinning algorithms. 
 
+![/doc/images/lrecog1b.jpg?raw=true](/doc/images/lrecog1s.jpg?raw=true "Leaves Recognition Application")
+
 By clicking on the right image you see a snapshot of the image processing tab, where a user can perform different operations to a list of loaded images.
 The small left image in this tab is a view of the original image like in the image file and the big one in the center of this window is the image after the user had pressed "Find Token" to process the different image processing operations including edge detection and thinning.
 There are 3 configurable sliders on this tab where a user can define the Threshold for the edge detection, the distance of the tokens (red square) and a minimum amount of pixels a line have to be to be recognized as a part of the shape.
-At the right upper side of this window you should see a hierarchical JTree where you can add and delete images to this tree. Please note that you can move images from one species to another by Drag&Drop.	Image Processing Tab
+At the right upper side of this window you should see a hierarchical JTree where you can add and delete images to this tree. Please note that you can move images from one species to another by Drag&Drop.
 
 So if you have added a image to a species node, this image is recognized as part of this Species and will be included in the neuronal network calculations on the second tab. For a good quality result you should normally add at least 5 images of a species to give the neuronal network enough tokens to find the specific shape of this leaf species.
 
 ### Neuronal Network
 A central part of the application is the neuronal network. Based on the information gained from the image processing the application can calculate the neuronal network weights and output a error graph to display the overall error of the learning process. 
 
+![/doc/images/lrecog2b.jpg?raw=true](/doc/images/lrecog2s.jpg?raw=true "Leaves Recognition Application")
+
 Like in the first described "Image Processing" tab, the neuronal network tab has also some sort of configuration. Mainly this configuration are the properties of the neuronal network. If you are not so familar with the background of neuronal network you can simply press "Set Default" and use the default properties the application suggests for your environment.
 
 Based on the amount of images and network properties you normally need to specify around 500-1000 training steps to get a good result in the recognition later. If the error rate drops below 0.01 you normally should encounter no problem in recognizing different leaf images.
-The amount of input neurons for the network is normally twice the amount of tokens because of the sinus & cosinus value for one token.	Neuronal Network Tab
+The amount of input neurons for the network is normally twice the amount of tokens because of the sinus & cosinus value for one token.
 
 You should keep the learning rate and number of hidden neurons low, because then you normally get out a good training phase for the network. Additionally of specifing the input and hidden neurons you are also able to specify the output neurons, what is normally not needed. The amount of output neurons is normally the amount of different leaf species which are in the JTree Panel of the image processing.
 
 ### Recognition
 The last of three parts in this application is the recognition tab. Here you can load a image and process a recognition of this leaf image to specify the possible species it can belong to. 
+
+![/doc/images/lrecog3b.jpg?raw=true](/doc/images/lrecog3s.jpg?raw=true "Leaves Recognition Application")
 
 Like in the first "Image processing" tab you are also able to control the Threshold, Distance and min.Line of the image processing that takes place on the loaded image as soon as you press "Recognize".
 
